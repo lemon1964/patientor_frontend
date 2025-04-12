@@ -4,7 +4,5 @@
 // Рендер и локально
 // export const apiBaseUrl = '/api';
 
-// // Vercel
-// export const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
-
+// // Vercel, Рендер и локально
 export const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;

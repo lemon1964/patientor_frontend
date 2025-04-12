@@ -47,7 +47,21 @@ const PatientInfo = ({ patient, diagnoses, onNewEntry }: Props) => {
   return (
     <Box sx={{ mt: 4 }}>
       <Typography variant="h4" sx={{ mb: 2 }}>
-        {patient.name} {genderIcon}
+        <Box display="flex" alignItems="center" gap={2} mb={2}>
+          <img
+            src={`/images/patients/${patient.name}.png`}
+            alt={patient.name}
+            width="60"
+            height="60"
+            style={{ borderRadius: "50%", objectFit: "cover", boxShadow: "0 2px 6px rgba(0,0,0,0.2)" }}
+            onError={e => {
+              (e.target as HTMLImageElement).style.display = "none";
+            }}
+          />
+          <Typography variant="h4">
+            {patient.name} {genderIcon}
+          </Typography>
+        </Box>
       </Typography>
       <Typography>ssn: {patient.ssn}</Typography>
       <Typography sx={{ mb: 2 }}>occupation: {patient.occupation}</Typography>

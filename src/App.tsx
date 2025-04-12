@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Route, Link, Routes, useMatch } from "react-router-dom";
-import { Button, Divider, Container, Typography } from "@mui/material";
+import { Button, Divider, Container, Typography, Box } from "@mui/material";
 import { apiBaseUrl } from "./constants";
 import { Patient, DiagnosisTypes, ErrorMessage, EntryWithoutId, UniversalEntryFormValues } from "./types";
 import patientService from "./services/patients";
@@ -162,6 +162,32 @@ const App = () => {
             element={<PatientInfo patient={selectedPatient} diagnoses={diagnoses} onNewEntry={handleNewEntry} />}
           />
         </Routes>
+
+        <Box textAlign="center" mt={6}>
+          <Typography variant="h6" gutterBottom>
+            Doctors of the clinic
+          </Typography>
+
+          <Box display="flex" justifyContent="center" gap={4} flexWrap="wrap">
+            {["Hippocrates", "Avicenna", "Metrodora", "Paracelsus", "Galen"].map(name => (
+              <Box key={name} textAlign="center">
+                <img
+                  src={`/images/doctors/${name}.png`}
+                  alt={name}
+                  width="60"
+                  height="60"
+                  style={{ borderRadius: "50%", objectFit: "cover", boxShadow: "0 2px 6px rgba(0,0,0,0.2)" }}
+                  onError={e => {
+                    (e.target as HTMLImageElement).style.display = "none";
+                  }}
+                />
+                <Typography variant="caption" display="block" mt={1}>
+                  Dr {name}
+                </Typography>
+              </Box>
+            ))}
+          </Box>
+        </Box>
       </Container>
     </div>
   );

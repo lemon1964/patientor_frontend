@@ -67,6 +67,7 @@ const PatientListPage = ({ patients, setPatients }: Props) => {
             <TableCell>Gender</TableCell>
             <TableCell>Occupation</TableCell>
             <TableCell>Health Rating</TableCell>
+            <TableCell>Photo</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -98,6 +99,18 @@ const PatientListPage = ({ patients, setPatients }: Props) => {
                   ) : (
                     <FavoriteBorder style={{ color: "rgba(0, 0, 0, 0.3)" }} />
                   )}
+                </TableCell>
+                <TableCell>
+                  <img
+                    src={`/images/patients/${patient.name}.png`}
+                    alt={patient.name}
+                    width="40"
+                    height="40"
+                    style={{ borderRadius: "50%", objectFit: "cover", boxShadow: "0 1px 4px rgba(0,0,0,0.2)" }}
+                    onError={e => {
+                      (e.target as HTMLImageElement).style.display = "none";
+                    }}
+                  />
                 </TableCell>
               </TableRow>
             );
